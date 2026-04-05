@@ -27,7 +27,8 @@ Lint & Test: The CI runner validates the code and runs unit tests.
 Docker Build & Push: A new image is built and pushed to [Docker Hub / Amazon ECR].
 Auto-Deploy: The pipeline connects to the AWS EC2 instance and triggers a container update with the latest image.
 🔗 Demo & Documentation
-Video Walkthrough: https://www.youtube.com/watch?v=hIIBxzOa064
+Old Manual Version: https://www.youtube.com/watch?v=CBpNdnFJ2Y8
+New Automated Demo: https://www.youtube.com/watch?v=hIIBxzOa064
 📥 How to Run Locally
 bash
 # Clone the repo
