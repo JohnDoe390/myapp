@@ -9,7 +9,7 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: "Hello World" });
+  res.status(200).json({ message: "Hello World V2-automating" });
 });
 
 const port = process.env.PORT || 3000;
