@@ -10,10 +10,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/health', (req, res) => {
-//  res.status(200).json({ status: "UP" });
+  res.status(200).json({ status: "UP" });
 });
 
-ap..p.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ Message: "Hello from World" });
 });
 
