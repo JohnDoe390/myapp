@@ -1,4 +1,4 @@
-pkkkrequire('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
@@ -10,10 +10,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: "UP" });
+//  res.status(200).json({ status: "UP" });
 });
 
-app.get('/', (req, res) => {
+ap..p.get('/', (req, res) => {
   res.status(200).json({ Message: "Hello from World" });
 });
 
