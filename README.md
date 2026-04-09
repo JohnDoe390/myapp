@@ -1,41 +1,89 @@
-📦 DevOps Evolution: Node.js CI/CD & Cloud Deployment
-From Manual Deployment to Automated Excellence.
-This project demonstrates the transition from a manual Docker-on-EC2 setup to a fully automated CI/CD pipeline, implementing industry-standard optimizations for speed, security, and scalability.
-🚀 The Upgrade: What’s New?
-Building on the foundational "v1" (Manual Docker Deployment), this version introduces a robust CI/CD Pipeline that automates the build-test-deploy lifecycle.
-Automated Pipeline: Integrated [GitHub Actions / Jenkins / CircleCI] to trigger builds on every push.
-Production Readiness: Moved from manual ssh commands to automated deployment scripts.
-Zero-Downtime Strategy: Implemented health-check-aware deployments to ensure the app never goes offline during updates.
-🛠️ Tech Stack & Tools
-Cloud: AWS (EC2, Security Groups, IAM)
-Containerization: Docker (Node:20-Alpine)
-CI/CD: [Insert Tool Name, e.g., GitHub Actions]
-Backend: Node.js
-OS: Ubuntu Linux
-🧠 Core Optimizations
-⚡ CI/CD & Docker Efficiency
-Layer Caching: Optimized Dockerfile instructions (separating package.json copy from source code) to reduce build times by up to 80%.
-Multi-Stage Builds: (Optional but recommended) Used to keep the final production image lean and secure.
-Automated Testing: The pipeline validates code integrity before the Docker image is even built.
-🛡️ Security & Reliability
-Secrets Management: Sensitive environment variables are injected via CI/CD secrets—never stored in the repo.
-Health Monitoring: A dedicated /health endpoint allows AWS Target Groups or Docker to monitor container vitals.
-Non-Root User: (Best Practice) Updated Dockerfile to run the application as a non-privileged user for enhanced security.
-⚙️ How the Pipeline Works
-Code Push: Developer pushes code to the main branch.
-Lint & Test: The CI runner validates the code and runs unit tests.
-Docker Build & Push: A new image is built and pushed to [Docker Hub / Amazon ECR].
-Auto-Deploy: The pipeline connects to the AWS EC2 instance and triggers a container update with the latest image.
-🔗 Demo & Documentation
-Old Manual Version: https://www.youtube.com/watch?v=CBpNdnFJ2Y8
-New Automated Demo: https://www.youtube.com/watch?v=hIIBxzOa064
-📥 How to Run Locally
-bash
-# Clone the repo
-git clone https://github.com
+# 🚀 Junior DevOps Portfolio: CI/CD + Docker + AWS EC2
 
-# Build the optimized image
-docker build -t node-app-optimized .
+This project demonstrates a simple DevOps workflow for building, deploying, and monitoring a Node.js application using Docker, GitHub Actions, and AWS EC2.
 
-# Run with environment variables
-docker run -p 3000:3000 --env-file .env node-app-optimized
+The goal is to show practical understanding of:
+- CI/CD pipelines
+- Containerized deployment
+- Runtime behavior and logging
+- Handling failures and recovery
+
+---
+
+## 🎥 Portfolio Videos
+
+### 📌 Video 1 — CI/CD Pipeline & Deployment
+https://www.youtube.com/watch?v=hIIBxzOa064
+**Focus:** Automated build and deployment
+
+- GitHub Actions pipeline triggered on push
+- Docker image build and push to Docker Hub
+- Deployment to AWS EC2 via SSH
+
+👉 Shows ability to automate application delivery
+
+---
+
+### 📌 Video 2 — Docker Runtime, Environment Variables & Logging
+https://www.youtube.com/watch?v=UvZCi5xdCwU
+**Focus:** Runtime behavior and observability
+
+- Application running inside a Docker container on EC2
+- `.env` used for configuration
+- Logging middleware to track incoming requests
+- Viewing logs with `docker logs`
+
+👉 Shows understanding of container runtime and debugging
+
+---
+
+### 📌 Video 3 — CI/CD Failure Handling & Recovery
+https://www.youtube.com/watch?v=xE6N9NSrD2Q
+**Focus:** Reliability and error handling
+
+- Introduced a deliberate syntax error in the application
+- CI/CD pipeline detected the failure using `node app.js`
+- Fixed the error and re-ran the pipeline successfully
+- Deployed updated container to EC2
+- Verified with logs and `/health` endpoint
+
+👉 Shows ability to handle failures and ensure safe deployments
+
+---
+
+## ⚙️ Tech Stack
+
+- **Backend:** Node.js (Express)
+- **Containerization:** Docker, Docker Hub
+- **CI/CD:** GitHub Actions
+- **Cloud:** AWS EC2
+- **OS:** Linux (Ubuntu)
+
+---
+
+## 🔄 CI/CD Workflow Overview
+
+1. Code is pushed to GitHub
+2. GitHub Actions pipeline runs:
+   - Builds Docker image
+   - Pushes image to Docker Hub
+   - Runs `node app.js` to detect syntax/runtime errors
+3. If successful:
+   - EC2 pulls the latest image
+   - Old container is stopped and removed
+   - New container is started
+
+---
+
+## 🧠 Key Takeaways
+
+- CI/CD pipelines should validate code before deployment
+- Docker ensures consistent runtime environments
+- Logs and health endpoints are essential for monitoring
+- Small improvements (env variables, logging, validation) significantly increase reliability
+
+---
+
+## 📎 Notes
+
+This project focuses on clarity and practical understanding rather than complex infrastructure. It is designed as a learning and demonstration project for junior DevOps roles.
