@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
-on: 
+on:
   push:
-    branches: [ main ] 
+    branches: [ main ]
 
 jobs:
   build-and-push:
@@ -13,10 +13,13 @@ jobs:
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-      - name: Build and Push
+      - name: Build and Push Docker Image
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
+
+      - name: Test Node app for syntax errors
+        run: node app.js
 
   deploy-to-ec2:
     needs: build-and-push
