@@ -1,4 +1,4 @@
-lpooorequire('dotenv').config();
+pkkkrequire('dotenv').config();
 const express = require('express');
 const app = express();
 
